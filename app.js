@@ -5,52 +5,51 @@ const btn = document.querySelector('.btn')
 
 result.textContent = "you are first player, click the button to start the game!"
 
+function getRandomNumber(num){
+    return Math.round(Math.random() * num);
+}
+
+function setImageAttribute(random_num, img) {
+    if(random_num == 0){
+        img.setAttribute('src', './img/paper.jpg');
+    }else if(random_num == 1){
+        img.setAttribute('src', './img/rock.jpg');
+    }else{
+        img.setAttribute('src', './img/scissors.jpg');
+    }
+}
+
 // btn elementiga hodisa qoshish
 btn.addEventListener('click', () => {
     // tasodifiy sonlar genetratsiya qilish
-    const first_random_number = Math.round(Math.random() * 2);
-    const second_random_number = Math.round(Math.random() * 2);
+    const first_random_number = getRandomNumber(2);
+    const second_random_number = getRandomNumber(2);
 
-    if(first_random_number == 0){
-        first_player_img.setAttribute('src', './img/paper.jpg');
-    }else if(first_random_number == 1){
-        first_player_img.setAttribute('src', './img/rock.jpg');
-    }else{
-        first_player_img.setAttribute('src', './img/scissors.jpg');
-    }
 
-    if(second_random_number == 0){
-        second_player_img.setAttribute('src', './img/paper.jpg');
-    }else if(second_random_number == 1){
-        second_player_img.setAttribute('src', './img/rock.jpg');
-    }else   {
-        second_player_img.setAttribute('src', './img/scissors.jpg');
-    }
+    // 0 - paper                                                                            
+    // 1 - rock                                                                            
+    // 2 - scissors                                                                            
 
-    // 0 - paper
-    // 1 - rock
-    // 2 - scissors
-
-    // birinchi o'yinchi yutadigan kombinatsiyalar
-    if(first_random_number == 0 && second_random_number == 1){
-        result.textContent = "siz yutdingiz!";
-        result.style.color = "green";
-    }else if(first_random_number == 1 && second_random_number == 2){
-        result.textContent = "siz yutdingiz!";
-        result.style.color = "green";
-    }else if(first_random_number == 2 && second_random_number == 0){
-        result.textContent = "siz yutdingiz!";
-        result.style.color = "green";
-    }
-    // durang bo'ladigan kombinatsiyalar
-    else if(first_random_number == second_random_number){
-        result.textContent = "durang!";
-        result.style.color = "blue";
-    } 
-    // ikkinchi o'yinchi yutadigan kombinatsiyalar
-    else{
-        result.textContent = "siz yutqizdingiz!";
-        result.style.color = "red";
+    // birinchi o'yinchi yutadigan kombinatsiyalar                                                                            
+    if(first_random_number == 0 && second_random_number == 1){                                                                            
+        result.textContent = "siz yutdingiz!";                                                                            
+        result.style.color = "green";                                                                            
+    }else if(first_random_number == 1 && second_random_number == 2){                                                                            
+        result.textContent = "siz yutdingiz!";                                                                            
+        result.style.color = "green";                                                                            
+    }else if(first_random_number == 2 && second_random_number == 0){                                                                            
+        result.textContent = "siz yutdingiz!";                                         
+        result.style.color = "green";                                         
+    }                                                    
+    // durang bo'ladigan kombinatsiyalar                                         
+    else if(first_random_number == second_random_number){                                         
+        result.textContent = "durang!";                                         
+        result.style.color = "blue";                                         
+    }                                                    
+    // ikkinchi o'yinchi yutadigan kombinatsiyalar                                         
+    else{                                                
+        result.textContent = "siz yutqizdingiz!";                                         
+        result.style.color = "red";                                                                                  
     }
 
 
